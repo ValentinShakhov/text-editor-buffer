@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class Buffer {
 
-    private final LinkedList<Change> undoDeque = new LinkedList<>();
+    private final Deque<Change> undoDeque = new LinkedList<>();
 
-    private final LinkedList<Change> redoDeque = new LinkedList<>();
+    private final Deque<Change> redoDeque = new LinkedList<>();
 
     private final int capacity;
 
@@ -16,7 +16,7 @@ public class Buffer {
         this.capacity = capacity;
     }
 
-    synchronized void add(Change change) {
+    void add(Change change) {
         if (Objects.isNull(change)) {
             throw new IllegalArgumentException("Value must not be null");
         }
@@ -25,7 +25,7 @@ public class Buffer {
         redoDeque.clear();
     }
 
-    synchronized Change getChangeForUndo() {
+    Change getChangeForUndo() {
         if (!hasUndo()) {
             throw new IllegalStateException("No changes to undo");
         }
@@ -35,7 +35,7 @@ public class Buffer {
         return result;
     }
 
-    synchronized Change getChangeForRedo() {
+    Change getChangeForRedo() {
         if (!hasRedo()) {
             throw new IllegalStateException("No changes to redo");
         }

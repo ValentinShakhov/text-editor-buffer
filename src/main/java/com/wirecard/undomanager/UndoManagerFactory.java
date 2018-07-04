@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 /**
  * A factory for {@link UndoManager}s.

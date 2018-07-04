@@ -1,16 +1,14 @@
-package undo;
+package com.wirecard.undomanager;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BufferTest {
 
-    private final static int CAPACITY = 3;
+    private final static int CAPACITY = 10;
 
     @Mock
     private Change change;
@@ -94,11 +92,5 @@ public class BufferTest {
     public void should_throw_exception_on_null_change() {
         final Buffer buffer = new Buffer(CAPACITY);
         buffer.add(null);
-    }
-
-    @Test
-    @Ignore
-    public void multi_thread_test() {
-        //TODO
     }
 }

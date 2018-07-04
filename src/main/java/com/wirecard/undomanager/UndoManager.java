@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 /**
  * A manager for getChangeForUndo and redo operations to {@link Document}s, based

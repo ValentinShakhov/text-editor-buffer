@@ -1,8 +1,9 @@
-package undo;
+package com.wirecard.undomanager;
 
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -20,12 +21,8 @@ public class UndoManagerImplTest {
     @Mock
     private Document document;
 
+    @InjectMocks
     private UndoManagerImpl undoManager;
-
-    @Before
-    public void before() {
-        undoManager = new UndoManagerImpl(document, buffer);
-    }
 
     @Test
     public void should_register_change() {
@@ -84,5 +81,11 @@ public class UndoManagerImplTest {
         }
         verify(buffer, atLeastOnce()).getChangeForRedo();
         verify(change, never()).apply(any(Document.class));
+    }
+
+    @Test
+    @Ignore
+    public void multi_thread_test() {
+        //TODO
     }
 }

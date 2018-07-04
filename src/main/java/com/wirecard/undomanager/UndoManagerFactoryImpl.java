@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 public class UndoManagerFactoryImpl implements UndoManagerFactory {
 

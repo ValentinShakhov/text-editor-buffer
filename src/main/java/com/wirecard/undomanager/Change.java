@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 /**
  * An abstraction of a change that can be registered with an

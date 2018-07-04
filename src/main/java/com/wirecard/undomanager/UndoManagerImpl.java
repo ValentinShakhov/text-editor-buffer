@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 public class UndoManagerImpl implements UndoManager {
 
@@ -13,8 +13,10 @@ public class UndoManagerImpl implements UndoManager {
 
     @Override
     public void registerChange(Change change) {
-        buffer.add(change);
-        change.apply(doc);
+        synchronized (doc) {
+            buffer.add(change);
+            change.apply(doc);
+        }
     }
 
     @Override
@@ -24,8 +26,10 @@ public class UndoManagerImpl implements UndoManager {
 
     @Override
     public void undo() {
-        final Change change = buffer.getChangeForUndo();
-        change.revert(doc);
+        synchronized (doc) {
+            final Change change = buffer.getChangeForUndo();
+            change.revert(doc);
+        }
     }
 
     @Override
@@ -35,7 +39,9 @@ public class UndoManagerImpl implements UndoManager {
 
     @Override
     public void redo() {
-        final Change change = buffer.getChangeForRedo();
-        change.apply(doc);
+        synchronized (doc) {
+            final Change change = buffer.getChangeForRedo();
+            change.apply(doc);
+        }
     }
 }

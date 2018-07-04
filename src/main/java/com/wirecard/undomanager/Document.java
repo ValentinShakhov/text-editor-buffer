@@ -1,4 +1,4 @@
-package undo;
+package com.wirecard.undomanager;
 
 /**
  * An abstraction of a document to be used with the {@link UndoManager}.

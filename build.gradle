@@ -1,4 +1,4 @@
-group 'undomanager'
+group 'wirecard'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
